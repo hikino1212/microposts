@@ -15,5 +15,10 @@ class ApplicationController < ActionController::Base
     @count_microposts = user.microposts.count
     @count_followings = user.followings.count
     @count_followers = user.followers.count
-  end 
+  end
+  def counts(micropost)
+    @count_following2s = micropost.followings.count
+    @count_follower2s = micropost.followers.count
+  end
+  
 end

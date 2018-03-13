@@ -13,6 +13,15 @@ Rails.application.routes.draw do
     end
   end
   
+  resources :microposts, only: [:index, :show, :new, :create] do
+    member do
+      get :following2s
+      get :follower2s
+    end
+  end
+
   resources :microposts, only: [:create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :rel2s, only: [:create, :destroy]
+  
 end

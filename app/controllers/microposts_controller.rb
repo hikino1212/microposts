@@ -32,4 +32,15 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     end
   end
+  def following2s
+    @micropost = Micropost.find(params[:id])
+    @following2s = @micropost.following2s.page(params[:page])
+    counts(@micropost)
+  end
+  
+  def follower2s
+    @micropost = Micropost.find(params[:id])
+    @follower2s = @micropost.follower2s.page(params[:page])
+    counts(@micropost)
+  end
 end

@@ -1,0 +1,13 @@
+<% unless current_micropost == micropost %>
+  <% if current_micropost.following2?(micropost) %>
+    <%= form_for(current_micropost.rel2s.find_by(follow2_id: micropost.id), html: { method: :delete }) do |f| %>
+      <%= hidden_field_tag :follow2_id, micropost.id %>
+      <%= f.submit 'Unfollow', class: 'btn btn-danger btn-block' %>
+    <% end %>
+  <% else %>
+    <%= form_for(current_micropost.rel2s.build) do |f| %>
+      <%= hidden_field_tag :follow2_id, micropost.id %>
+      <%= f.submit 'Follow', class: 'btn btn-primary btn-block' %>
+    <% end %>
+  <% end %>
+<% end %>
